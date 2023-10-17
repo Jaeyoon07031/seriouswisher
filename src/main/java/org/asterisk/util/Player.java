@@ -10,6 +10,7 @@ public class Player
     private int purpleFates;
     private int outstandingBalance;
 
+
     private ItemManifest inventory;
 
     public Player()

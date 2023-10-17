@@ -10,11 +10,6 @@ public class WishSimulator
 
     }
 
-    public ItemManifest simulateBeginnerWish(int pulls)
-    {
-        return new ItemManifest(new ArrayList<Item>());
-    }
-
     public ItemManifest simulateStandardWish(int pulls)
     {
         return new ItemManifest(new ArrayList<Item>());

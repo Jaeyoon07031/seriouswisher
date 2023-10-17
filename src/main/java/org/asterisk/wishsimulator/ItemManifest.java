@@ -1,7 +1,6 @@
 package org.asterisk.wishsimulator;
 
 import java.util.*;
-import org.asterisk.wishsimulator.Item;
 
 public class ItemManifest
 {
