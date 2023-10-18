@@ -22,6 +22,7 @@ public class WishMenu
             {
                 System.out.println("You are now pulling on the Limited Character Banner.");
                 int wishCount = askLimitedWishCount(console, player);
+
                 return;
             }
             else if (response.equalsIgnoreCase("WEAPON"))
@@ -34,6 +35,8 @@ public class WishMenu
             {
                 System.out.println("You are now pulling on the Standard Banner.");
                 int wishCount = askStandardWishCount(console, player);
+
+                ItemManifest result = simulator.simulateStandardWish(player, wishCount);
                 return;
             }
             else

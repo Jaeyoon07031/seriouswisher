@@ -5,17 +5,19 @@ import java.util.*;
 public class ItemManifest
 {
     ArrayList<Item> unsortedManifest;
-    ArrayList<Item> sortedManifest;
 
     public ItemManifest(ArrayList<Item> itemList)
     {
         unsortedManifest = itemList;
-        sortedManifest = sortItemManifest(itemList);
     }
 
-    private ArrayList<Item> sortItemManifest(ArrayList<Item> itemList)
+    public void add(Item item)
     {
-        //TODO: actually sort them
-        return itemList;
+        unsortedManifest.add(item);
+    }
+
+    public ArrayList<Item> getArray()
+    {
+        return unsortedManifest;
     }
 }
