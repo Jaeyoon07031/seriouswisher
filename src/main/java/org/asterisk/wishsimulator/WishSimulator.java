@@ -11,6 +11,7 @@ public class WishSimulator
     private final Random gen;
 
     private final double FIVE_CHANCE = 0.006;
+    private final double WEAPON_FIVE_CHANCE = 0.008;
     private final double FOUR_CHANCE = 0.051;
 
     public WishSimulator()
@@ -74,9 +75,61 @@ public class WishSimulator
         return results;
     }
 
-    public ItemManifest simulateLimitedWish(int pulls)
+    public ItemManifest simulateLimitedWish(Player player, int pulls)
     {
-        return new ItemManifest(new ArrayList<Item>());
+        ItemManifest results = new ItemManifest(new ArrayList<Item>());
+        int fourPity = player.getLimitedFourPity();
+        int fivePity = player.getLimitedFivePity();
+
+        for (int i = 0; i < pulls; i++)
+        {
+            fourPity++;
+            fivePity++;
+
+            if (fivePity > 75)
+            {
+                if (gen.nextDouble() < FIVE_CHANCE + ((fivePity - 75) * 0.06))
+                {
+                    results.add(addLimitedFive());
+                    fivePity = 0;
+                    continue;
+                }
+            }
+            else
+            {
+                if (gen.nextDouble() < FIVE_CHANCE)
+                {
+                    results.add(addLimitedFive());
+                    fivePity = 0;
+                    continue;
+                }
+            }
+
+            if (fourPity == 10)
+            {
+                results.add(addLimitedFour());
+                fourPity = 0;
+                continue;
+            }
+            else
+            {
+                if (gen.nextDouble() < FOUR_CHANCE)
+                {
+                    results.add(addLimitedFour());
+                    fourPity = 0;
+                    continue;
+                }
+            }
+
+            int chosenThree = gen.nextInt(ItemUtils.getItems("LIMITED", "WEAPON", 3).size());
+            results.add(ItemUtils.getItems("LIMITED", "WEAPON", 3).get(chosenThree));
+        }
+
+        player.setLimitedFourPity(fourPity);
+        player.setLimitedFivePity(fivePity);
+
+        return results;
+
     }
 
     public ItemManifest simulateWeaponWish(int pulls)
@@ -109,6 +162,33 @@ public class WishSimulator
         {
             int chosenFour = gen.nextInt(ItemUtils.getItems("STANDARD", "WEAPON", 4).size());
             return ItemUtils.getItems("STANDARD", "WEAPON", 4).get(chosenFour);
+        }
+    }
+
+    public Item addLimitedFive()
+    {
+        if (gen.nextInt(2) == 0)
+        {
+            int chosenFive = gen.nextInt(ItemUtils.getItems("LIMITED", "CHARACTER", 5).size());
+            return ItemUtils.getItems("LIMITED", "CHARACTER", 5).get(chosenFive);
+        }
+        else
+        {
+            return ItemUtils.getLimitedFiveCharacter();
+        }
+    }
+
+    public Item addLimitedFour()
+    {
+        if (gen.nextInt(2) == 0)
+        {
+            int chosenFive = gen.nextInt(ItemUtils.getItems("LIMITED", "CHARACTER", 4).size());
+            return ItemUtils.getItems("LIMITED", "CHARACTER", 4).get(chosenFive);
+        }
+        else
+        {
+            int chosenFive = gen.nextInt(ItemUtils.getItems("LIMITED", "WEAPON", 4).size());
+            return ItemUtils.getItems("LIMITED", "WEAPON", 4).get(chosenFive);
         }
     }
 }

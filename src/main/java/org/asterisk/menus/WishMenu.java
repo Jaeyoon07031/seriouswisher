@@ -23,6 +23,7 @@ public class WishMenu
                 System.out.println("You are now pulling on the Limited Character Banner.");
                 int wishCount = askLimitedWishCount(console, player);
 
+                ItemManifest result = simulator.simulateLimitedWish(player, wishCount);
                 return;
             }
             else if (response.equalsIgnoreCase("WEAPON"))
@@ -73,6 +74,7 @@ public class WishMenu
                 {
                     player.setPrimogems(player.getPrimogems() - ((response - fatePulls) * 160));
                     player.setPurpleFates(player.getPurpleFates() + (response - fatePulls));
+                    //TODO: fix pulls not being consumed
                 }
                 else
                 {

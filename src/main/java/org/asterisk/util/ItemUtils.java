@@ -5,6 +5,27 @@ import org.asterisk.wishsimulator.Item;
 
 public class ItemUtils
 {
+    private static final Item[] fourCharacters = {Item.FARUZAN, Item.SAYU, Item.SHIKANOIN_HEIZOU, Item.SUCROSE, Item.CHONGYUN,
+            Item.DIONA, Item.KAEYA, Item.LAYLA, Item.MIKA, Item.ROSARIA, Item.COLLEI, Item.KAVEH, Item.KIRARA,
+            Item.YAOYAO, Item.BEIDOU, Item.DORI, Item.FISCHL, Item.SARA, Item.KUKI_SHINOBU, Item.LISA, Item.RAZOR,
+            Item.GOROU, Item.NINGGUANG, Item.NOELLE, Item.YUNJIN, Item.BARBARA, Item.CANDACE, Item.XINGQIU,
+            Item.AMBER, Item.BENNETT, Item.THOMA, Item.XIANGLING, Item.XINYAN, Item.YANFEI};
+    private static final Item[] standardFiveCharacters = {Item.JEAN, Item.QIQI, Item.TIGHNARI, Item.KEQING, Item.MONA, Item.DEHYA,
+            Item.DILUC};
+    private static final Item[] threeWeapons = {Item.RAVEN_BOW, Item.SHARPSHOOTERS_OATH, Item.SLINGSHOT, Item.EMERALD_ORB, Item.MAGIC_GUIDE,
+            Item.THRILLING_TALES_OF_DRAGON_SLAYERS, Item.BLOODTAINTED_GREATSWORD, Item.DEBATE_CLUB, Item.FERROUS_SHADOW,
+            Item.BLACK_TASSEL, Item.COOL_STEEL, Item.HARBINGER_OF_DAWN, Item.SKYRIDER_SWORD};
+    private static final Item[] fourWeapons = {Item.FAVONIUS_WARBOW, Item.RUST, Item.SACRIFICIAL_BOW, Item.THE_STRINGLESS, Item.EYE_OF_PERCEPTION,
+            Item.FAVONIUS_CODEX, Item.THE_WIDSITH, Item.FAVONIUS_GREATSWORD, Item.RAINSLASHER, Item.SACRIFICIAL_GREATSWORD,
+            Item.THE_BELL, Item.DRAGONS_BANE, Item.FAVONIUS_LANCE, Item.FAVONIUS_SWORD, Item.LIONS_ROAR,
+            Item.SACRIFICIAL_SWORD, Item.THE_FLUTE};
+    private static final Item[] fiveWeapons = {Item.AMOS_BOW, Item.SKYWARD_HARP, Item.LOST_PRAYER_TO_THE_SACRED_WINDS, Item.SKYWARD_ATLAS,
+            Item.SKYWARD_PRIDE, Item.WOLFS_GRAVESTONE, Item.PRIMORDIAL_JADE_WINGED_SPEAR, Item.SKYWARD_SPINE,
+            Item.AQUILA_FAVONIA, Item.SKYWARD_BLADE};
+
+
+    private static final Item limitedFiveCharacter = Item.NEUVILLETTE;
+
     public static String getItemDisplayName(Item item)
     {
         return switch (item) {
@@ -15,7 +36,7 @@ public class ItemUtils
             case MONA -> "Mona";
             case DEHYA -> "Dehya";
             case DILUC -> "Diluc";
-            case FARUZAN -> "Faruzaan";
+            case FARUZAN -> "Faruzan";
             case SAYU -> "Sayu";
             case SHIKANOIN_HEIZOU -> "Shikanoin Heizou";
             case SUCROSE -> "Sucrose";
@@ -89,65 +110,76 @@ public class ItemUtils
             case COOL_STEEL -> "Cool Steel";
             case HARBINGER_OF_DAWN -> "Harbinger of Dawn";
             case SKYRIDER_SWORD -> "Skyrider Sword";
+            case ALBEDO -> "Albedo";
+            case ALHAITHAM -> "Alhaitham";
+            case ARATAKI_ITTO -> "Arataki Itto";
+            case BAIZHU -> "Baizhu";
+            case CYNO -> "Cyno";
+            case EULA -> "Eula";
+            case GANYU -> "Ganyu";
+            case HU_TAO -> "Hu Tao";
+            case KAEDEHARA_KAZUHA -> "Kaedehara Kazuha";
+            case KAMISATO_AYAKA -> "Kamisato Ayaka";
+            case KAMISATO_AYATO -> "Kamisato Ayato";
+            case KLEE -> "Klee";
+            case LYNEY -> "Lyney";
+            case NAHIDA -> "Nahida";
+            case NEUVILLETTE -> "Neuvillette";
+            case NILOU -> "Nilou";
+            case RAIDEN_SHOGUN -> "Raiden Shogun";
+            case SANGONOMIYA_KOKOMI -> "Sangonomiya Kokomi";
+            case SHENHE -> "Shenhe";
+            case TARTAGLIA -> "Tartaglia";
+            case VENTI -> "Venti";
+            case WANDERER -> "Wanderer";
+            case WRIOTHESLEY -> "Wriothesley";
+            case XIAO -> "Xiao";
+            case YAE_MIKO -> "Yae Miko";
+            case YELAN -> "Yelan";
+            case YOIMIYA -> "Yoimiya";
+            case ZHONGLI -> "Zhongli";
         };
-
-
     }
 
     //TODO: change String banner to an enum?
     public static ArrayList<Item> getItems(String banner, String type, int rarity)
     {
-        if (banner.equals("STANDARD"))
+        //TODO: different stuff for limited
+        if (banner.equals("STANDARD") || banner.equals("LIMITED"))
         {
             if (type.equals("CHARACTER"))
             {
                 if (rarity == 4)
                 {
-                    Item[] standardCharacters = {Item.FARUZAN, Item.SAYU, Item.SHIKANOIN_HEIZOU, Item.SUCROSE, Item.CHONGYUN,
-                            Item.DIONA, Item.KAEYA, Item.LAYLA, Item.MIKA, Item.ROSARIA, Item.COLLEI, Item.KAVEH, Item.KIRARA,
-                            Item.YAOYAO, Item.BEIDOU, Item.DORI, Item.FISCHL, Item.SARA, Item.KUKI_SHINOBU, Item.LISA, Item.RAZOR,
-                            Item.GOROU, Item.NINGGUANG, Item.NOELLE, Item.YUNJIN, Item.BARBARA, Item.CANDACE, Item.XINGQIU,
-                            Item.AMBER, Item.BENNETT, Item.THOMA, Item.XIANGLING, Item.XINYAN, Item.YANFEI
-                    };
-                    return new ArrayList<Item>(Arrays.asList(standardCharacters));
+                    return new ArrayList<Item>(Arrays.asList(fourCharacters));
                 }
                 else if (rarity == 5)
                 {
-                    Item[] standardCharacters = {Item.JEAN, Item.QIQI, Item.TIGHNARI, Item.KEQING, Item.MONA, Item.DEHYA,
-                            Item.DILUC};
-                    return new ArrayList<Item>(Arrays.asList(standardCharacters));
+                    return new ArrayList<Item>(Arrays.asList(standardFiveCharacters));
                 }
             }
             else if (type.equals("WEAPON"))
             {
                 if (rarity == 3)
                 {
-                    Item[] weapons = {Item.RAVEN_BOW, Item.SHARPSHOOTERS_OATH, Item.SLINGSHOT, Item.EMERALD_ORB, Item.MAGIC_GUIDE,
-                            Item.THRILLING_TALES_OF_DRAGON_SLAYERS, Item.BLOODTAINTED_GREATSWORD, Item.DEBATE_CLUB, Item.FERROUS_SHADOW,
-                            Item.BLACK_TASSEL, Item.COOL_STEEL, Item.HARBINGER_OF_DAWN, Item.SKYRIDER_SWORD
-                    };
-                    return new ArrayList<Item>(Arrays.asList(weapons));
+                    return new ArrayList<Item>(Arrays.asList(threeWeapons));
                 }
                 else if (rarity == 4)
                 {
-                    Item[] weapons = {Item.FAVONIUS_WARBOW, Item.RUST, Item.SACRIFICIAL_BOW, Item.THE_STRINGLESS, Item.EYE_OF_PERCEPTION,
-                            Item.FAVONIUS_CODEX, Item.THE_WIDSITH, Item.FAVONIUS_GREATSWORD, Item.RAINSLASHER, Item.SACRIFICIAL_GREATSWORD,
-                            Item.THE_BELL, Item.DRAGONS_BANE, Item.FAVONIUS_LANCE, Item.FAVONIUS_SWORD, Item.LIONS_ROAR,
-                            Item.SACRIFICIAL_SWORD, Item.THE_FLUTE
-                    };
-                    return new ArrayList<Item>(Arrays.asList(weapons));
+                    return new ArrayList<Item>(Arrays.asList(fourWeapons));
                 }
                 else if (rarity == 5)
                 {
-                    Item[] weapons = {Item.AMOS_BOW, Item.SKYWARD_HARP, Item.LOST_PRAYER_TO_THE_SACRED_WINDS, Item.SKYWARD_ATLAS,
-                            Item.SKYWARD_PRIDE, Item.WOLFS_GRAVESTONE, Item.PRIMORDIAL_JADE_WINGED_SPEAR, Item.SKYWARD_SPINE,
-                            Item.AQUILA_FAVONIA, Item.SKYWARD_BLADE
-                    };
-                    return new ArrayList<Item>(Arrays.asList(weapons));
+                    return new ArrayList<Item>(Arrays.asList(fiveWeapons));
                 }
             }
         }
 
         return null;
+    }
+
+    public static Item getLimitedFiveCharacter()
+    {
+        return limitedFiveCharacter;
     }
 }

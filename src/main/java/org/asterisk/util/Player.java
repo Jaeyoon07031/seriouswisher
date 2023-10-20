@@ -12,6 +12,8 @@ public class Player
 
     private int standardFourPity;
     private int standardFivePity;
+    private int limitedFourPity;
+    private int limitedFivePity;
 
     private ItemManifest inventory;
 
@@ -96,4 +98,25 @@ public class Player
     {
         standardFivePity = newAmount;
     }
+
+    public int getLimitedFourPity()
+    {
+        return limitedFourPity;
+    }
+
+    public void setLimitedFourPity (int newAmount)
+    {
+        limitedFourPity = newAmount;
+    }
+
+    public int getLimitedFivePity()
+    {
+        return limitedFivePity;
+    }
+
+    public void setLimitedFivePity (int newAmount)
+    {
+        limitedFivePity = newAmount;
+    }
+
 }
