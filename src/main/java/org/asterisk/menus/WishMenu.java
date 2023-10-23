@@ -24,6 +24,8 @@ public class WishMenu
                 int wishCount = askLimitedWishCount(console, player);
 
                 ItemManifest result = simulator.simulateLimitedWish(player, wishCount);
+                player.setPurpleFates(player.getPurpleFates() - wishCount);
+                printWishResults(result);
                 return;
             }
             else if (response.equalsIgnoreCase("WEAPON"))
@@ -38,6 +40,8 @@ public class WishMenu
                 int wishCount = askStandardWishCount(console, player);
 
                 ItemManifest result = simulator.simulateStandardWish(player, wishCount);
+                player.setBlueFates(player.getBlueFates() - wishCount);
+                printWishResults(result);
                 return;
             }
             else
@@ -125,6 +129,9 @@ public class WishMenu
 
     private static void printWishResults(ItemManifest manifest)
     {
-
+        for (Item item : manifest.getArray())
+        {
+            System.out.println(ItemUtils.getItemDisplayName(item));
+        }
     }
 }

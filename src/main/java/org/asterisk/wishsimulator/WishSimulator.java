@@ -129,7 +129,6 @@ public class WishSimulator
         player.setLimitedFivePity(fivePity);
 
         return results;
-
     }
 
     public ItemManifest simulateWeaponWish(int pulls)
