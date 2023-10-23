@@ -24,7 +24,7 @@ public class ItemUtils
             Item.AQUILA_FAVONIA, Item.SKYWARD_BLADE};
 
 
-    private static final Item limitedFiveCharacter = Item.NEUVILLETTE;
+    private static final Item limitedFiveCharacter = Item.WRIOTHESLEY;
 
     public static String getItemDisplayName(Item item)
     {

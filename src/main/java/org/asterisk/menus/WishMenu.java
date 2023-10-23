@@ -2,11 +2,18 @@ package org.asterisk.menus;
 
 import java.util.Scanner;
 
+import com.diogonunes.jcolor.*;
+
 import org.asterisk.util.*;
 import org.asterisk.wishsimulator.*;
 
 public class WishMenu
 {
+    private static final String STAR = "✪";
+    private static final AnsiFormat threeStar = new AnsiFormat(Attribute.BRIGHT_WHITE_TEXT(), Attribute.BLUE_BACK());
+    private static final AnsiFormat fourStar = new AnsiFormat(Attribute.BRIGHT_WHITE_TEXT(), Attribute.MAGENTA_BACK(), Attribute.ITALIC());
+    private static final AnsiFormat fiveStar = new AnsiFormat(Attribute.BRIGHT_WHITE_TEXT(), Attribute.YELLOW_BACK(), Attribute.BOLD());
+
     public static void wishMenu(Scanner console, WishSimulator simulator, Player player)
     {
         for (;;)
@@ -129,9 +136,28 @@ public class WishMenu
 
     private static void printWishResults(ItemManifest manifest)
     {
+        System.out.println("Wish Results");
         for (Item item : manifest.getArray())
         {
-            System.out.println(ItemUtils.getItemDisplayName(item));
+            String output = "";
+            output = output + ItemUtils.getItemDisplayName(item) + " - ";
+            for (int i = 0; i < ItemUtils.getItemRarity(item); i++)
+            {
+               output = output + STAR;
+            }
+
+            if (ItemUtils.getItemRarity(item) == 3)
+            {
+                System.out.println(threeStar.format(output));
+            }
+            else if (ItemUtils.getItemRarity(item) == 4)
+            {
+                System.out.println(fourStar.format(output));
+            }
+            else
+            {
+                System.out.println(fiveStar.format(output));
+            }
         }
     }
 }
