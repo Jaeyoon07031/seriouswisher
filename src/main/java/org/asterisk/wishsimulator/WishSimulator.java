@@ -90,7 +90,7 @@ public class WishSimulator
             {
                 if (gen.nextDouble() < FIVE_CHANCE + ((fivePity - 75) * 0.06))
                 {
-                    results.add(addLimitedFive());
+                    results.add(addLimitedFive(player));
                     fivePity = 0;
                     continue;
                 }
@@ -99,7 +99,7 @@ public class WishSimulator
             {
                 if (gen.nextDouble() < FIVE_CHANCE)
                 {
-                    results.add(addLimitedFive());
+                    results.add(addLimitedFive(player));
                     fivePity = 0;
                     continue;
                 }
@@ -164,15 +164,23 @@ public class WishSimulator
         }
     }
 
-    public Item addLimitedFive()
+    public Item addLimitedFive(Player player)
     {
+        if (player.getLimitedCharacterPity())
+        {
+            player.setLimitedCharacterPity(false);
+            return ItemUtils.getLimitedFiveCharacter();
+        }
+
         if (gen.nextInt(2) == 0)
         {
+            player.setLimitedCharacterPity(true);
             int chosenFive = gen.nextInt(ItemUtils.getItems("LIMITED", "CHARACTER", 5).size());
             return ItemUtils.getItems("LIMITED", "CHARACTER", 5).get(chosenFive);
         }
         else
         {
+            player.setLimitedCharacterPity(false);
             return ItemUtils.getLimitedFiveCharacter();
         }
     }

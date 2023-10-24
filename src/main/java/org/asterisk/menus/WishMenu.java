@@ -1,6 +1,6 @@
 package org.asterisk.menus;
 
-import java.util.Scanner;
+import java.util.*;
 
 import com.diogonunes.jcolor.*;
 
@@ -10,9 +10,9 @@ import org.asterisk.wishsimulator.*;
 public class WishMenu
 {
     private static final String STAR = "✪";
-    private static final AnsiFormat threeStar = new AnsiFormat(Attribute.BRIGHT_WHITE_TEXT(), Attribute.BLUE_BACK());
-    private static final AnsiFormat fourStar = new AnsiFormat(Attribute.BRIGHT_WHITE_TEXT(), Attribute.MAGENTA_BACK(), Attribute.ITALIC());
-    private static final AnsiFormat fiveStar = new AnsiFormat(Attribute.BRIGHT_WHITE_TEXT(), Attribute.YELLOW_BACK(), Attribute.BOLD());
+    private static final AnsiFormat THREE_STAR = new AnsiFormat(Attribute.BRIGHT_WHITE_TEXT(), Attribute.BLUE_BACK());
+    private static final AnsiFormat FOUR_STAR = new AnsiFormat(Attribute.BRIGHT_WHITE_TEXT(), Attribute.MAGENTA_BACK(), Attribute.ITALIC());
+    private static final AnsiFormat FIVE_STAR = new AnsiFormat(Attribute.BRIGHT_WHITE_TEXT(), Attribute.YELLOW_BACK(), Attribute.BOLD());
 
     public static void wishMenu(Scanner console, WishSimulator simulator, Player player)
     {
@@ -33,10 +33,15 @@ public class WishMenu
                 ItemManifest result = simulator.simulateLimitedWish(player, wishCount);
                 player.setPurpleFates(player.getPurpleFates() - wishCount);
                 printWishResults(result);
+
+                ItemManifest oldInventory = player.getInventory();
+                oldInventory.addAll(result.getArray());
+                player.setInventory(oldInventory);
                 return;
             }
             else if (response.equalsIgnoreCase("WEAPON"))
             {
+                //TODO: make weapon banner
                 System.out.println("You are now pulling on the Limited Weapon Banner.");
                 int wishCount = askLimitedWishCount(console, player);
                 return;
@@ -49,6 +54,10 @@ public class WishMenu
                 ItemManifest result = simulator.simulateStandardWish(player, wishCount);
                 player.setBlueFates(player.getBlueFates() - wishCount);
                 printWishResults(result);
+
+                ItemManifest oldInventory = player.getInventory();
+                oldInventory.addAll(result.getArray());
+                player.setInventory(oldInventory);
                 return;
             }
             else
@@ -85,7 +94,6 @@ public class WishMenu
                 {
                     player.setPrimogems(player.getPrimogems() - ((response - fatePulls) * 160));
                     player.setPurpleFates(player.getPurpleFates() + (response - fatePulls));
-                    //TODO: fix pulls not being consumed
                 }
                 else
                 {
@@ -148,15 +156,15 @@ public class WishMenu
 
             if (ItemUtils.getItemRarity(item) == 3)
             {
-                System.out.println(threeStar.format(output));
+                System.out.println(THREE_STAR.format(output));
             }
             else if (ItemUtils.getItemRarity(item) == 4)
             {
-                System.out.println(fourStar.format(output));
+                System.out.println(FOUR_STAR.format(output));
             }
             else
             {
-                System.out.println(fiveStar.format(output));
+                System.out.println(FIVE_STAR.format(output));
             }
         }
     }

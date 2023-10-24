@@ -1,6 +1,9 @@
 package org.asterisk.util;
 
 import java.util.*;
+
+import com.diogonunes.jcolor.AnsiFormat;
+import com.diogonunes.jcolor.Attribute;
 import org.asterisk.wishsimulator.Item;
 
 public class ItemUtils
@@ -22,6 +25,22 @@ public class ItemUtils
     private static final Item[] fiveWeapons = {Item.AMOS_BOW, Item.SKYWARD_HARP, Item.LOST_PRAYER_TO_THE_SACRED_WINDS, Item.SKYWARD_ATLAS,
             Item.SKYWARD_PRIDE, Item.WOLFS_GRAVESTONE, Item.PRIMORDIAL_JADE_WINGED_SPEAR, Item.SKYWARD_SPINE,
             Item.AQUILA_FAVONIA, Item.SKYWARD_BLADE};
+    private static final Item[] orderedItemList = {Item.ALBEDO, Item.ALHAITHAM, Item.ARATAKI_ITTO, Item.BAIZHU, Item.CYNO, Item.EULA,
+            Item.GANYU, Item.HU_TAO, Item.KAEDEHARA_KAZUHA, Item.KAMISATO_AYAKA, Item.KAMISATO_AYATO, Item.KLEE, Item.LYNEY,
+            Item.NAHIDA, Item.NEUVILLETTE, Item.NILOU, Item.RAIDEN_SHOGUN, Item.SANGONOMIYA_KOKOMI, Item.SHENHE, Item.TARTAGLIA,
+            Item.VENTI, Item.WANDERER, Item.WRIOTHESLEY, Item.XIAO, Item.YAE_MIKO, Item.YELAN, Item.YOIMIYA, Item.ZHONGLI, Item.JEAN, Item.QIQI,
+            Item.TIGHNARI, Item.KEQING, Item.MONA, Item.DEHYA, Item.DILUC, Item.AMOS_BOW, Item.SKYWARD_HARP, Item.LOST_PRAYER_TO_THE_SACRED_WINDS,
+            Item.SKYWARD_ATLAS, Item.SKYWARD_PRIDE, Item.WOLFS_GRAVESTONE, Item.PRIMORDIAL_JADE_WINGED_SPEAR, Item.SKYWARD_SPINE,
+            Item.AQUILA_FAVONIA, Item.SKYWARD_BLADE, Item.FARUZAN, Item.SAYU, Item.SHIKANOIN_HEIZOU, Item.SUCROSE, Item.CHONGYUN,
+            Item.DIONA, Item.KAEYA, Item.LAYLA, Item.MIKA, Item.ROSARIA, Item.COLLEI, Item.KAVEH, Item.KIRARA, Item.YAOYAO,
+            Item.BEIDOU, Item.DORI, Item.FISCHL, Item.SARA, Item.KUKI_SHINOBU, Item.LISA, Item.RAZOR, Item.GOROU, Item.NINGGUANG,
+            Item.NOELLE, Item.YUNJIN, Item.BARBARA, Item.CANDACE, Item.XINGQIU, Item.AMBER, Item.BENNETT, Item.THOMA, Item.XIANGLING,
+            Item.XINYAN, Item.YANFEI, Item.FAVONIUS_WARBOW, Item.RUST, Item.SACRIFICIAL_BOW, Item.THE_STRINGLESS, Item.EYE_OF_PERCEPTION,
+            Item.FAVONIUS_CODEX, Item.THE_WIDSITH, Item.FAVONIUS_GREATSWORD, Item.RAINSLASHER, Item.SACRIFICIAL_GREATSWORD,
+            Item.THE_BELL, Item.DRAGONS_BANE, Item.FAVONIUS_LANCE, Item.FAVONIUS_SWORD, Item.LIONS_ROAR, Item.SACRIFICIAL_SWORD,
+            Item.THE_FLUTE, Item.RAVEN_BOW, Item.SHARPSHOOTERS_OATH, Item.SLINGSHOT, Item.EMERALD_ORB, Item.MAGIC_GUIDE,
+            Item.THRILLING_TALES_OF_DRAGON_SLAYERS, Item.BLOODTAINTED_GREATSWORD, Item.DEBATE_CLUB, Item.FERROUS_SHADOW,
+            Item.BLACK_TASSEL, Item.COOL_STEEL, Item.HARBINGER_OF_DAWN, Item.SKYRIDER_SWORD};
 
 
     private static final Item limitedFiveCharacter = Item.WRIOTHESLEY;
@@ -162,6 +181,11 @@ public class ItemUtils
         };
     }
 
+    public static ArrayList<Item> getOrderedItemList()
+    {
+        return new ArrayList<Item>(Arrays.asList(orderedItemList));
+    }
+
     //TODO: change String banner to an enum?
     public static ArrayList<Item> getItems(String banner, String type, int rarity)
     {
@@ -197,6 +221,34 @@ public class ItemUtils
         }
 
         return null;
+    }
+
+    public static String getPrintedString(Item item)
+    {
+        final String STAR = "✪";
+        final AnsiFormat THREE_STAR = new AnsiFormat(Attribute.BRIGHT_WHITE_TEXT(), Attribute.BLUE_BACK());
+        final AnsiFormat FOUR_STAR = new AnsiFormat(Attribute.BRIGHT_WHITE_TEXT(), Attribute.MAGENTA_BACK(), Attribute.ITALIC());
+        final AnsiFormat FIVE_STAR = new AnsiFormat(Attribute.BRIGHT_WHITE_TEXT(), Attribute.YELLOW_BACK(), Attribute.BOLD());
+
+        String output = "";
+        output = output + ItemUtils.getItemDisplayName(item) + " - ";
+        for (int i = 0; i < ItemUtils.getItemRarity(item); i++)
+        {
+            output = output + STAR;
+        }
+
+        if (ItemUtils.getItemRarity(item) == 3)
+        {
+            return THREE_STAR.format(output);
+        }
+        else if (ItemUtils.getItemRarity(item) == 4)
+        {
+            return FOUR_STAR.format(output);
+        }
+        else
+        {
+            return FIVE_STAR.format(output);
+        }
     }
 
     public static Item getLimitedFiveCharacter()

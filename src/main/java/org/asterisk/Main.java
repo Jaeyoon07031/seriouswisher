@@ -15,6 +15,7 @@ public class Main
         Scanner console = new Scanner(System.in);
         Player player = new Player();
         WishSimulator simulator = new WishSimulator();
+        InventoryMenu inventoryMenu = new InventoryMenu();
         PaymentProcessor payments = new PaymentProcessor();
 
         //TODO: write an introduction and gambling hotline thing lmao
@@ -35,7 +36,7 @@ public class Main
             }
             else if (choice.equalsIgnoreCase("INVENTORY"))
             {
-                inventoryMenu();
+                inventoryMenu(inventoryMenu, player);
             }
             else if (choice.equalsIgnoreCase("CHECKOUT"))
             {
@@ -57,9 +58,9 @@ public class Main
 
     }
 
-    private static void inventoryMenu()
+    private static void inventoryMenu(InventoryMenu inventoryMenu, Player player)
     {
-
+        inventoryMenu.openMenu(player);
     }
 
     private static void checkoutMenu(PaymentProcessor payments)

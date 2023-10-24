@@ -15,6 +15,8 @@ public class Player
     private int limitedFourPity;
     private int limitedFivePity;
 
+    private boolean limitedCharacterPity;
+
     private ItemManifest inventory;
 
     public Player()
@@ -25,6 +27,7 @@ public class Player
         outstandingBalance = 0;
         standardFourPity = 0;
         standardFivePity = 0;
+        limitedCharacterPity = false;
 
         inventory = new ItemManifest(new ArrayList<Item>());
     }
@@ -117,6 +120,16 @@ public class Player
     public void setLimitedFivePity (int newAmount)
     {
         limitedFivePity = newAmount;
+    }
+
+    public boolean getLimitedCharacterPity()
+    {
+        return limitedCharacterPity;
+    }
+
+    public void setLimitedCharacterPity (boolean newAmount)
+    {
+        limitedCharacterPity = newAmount;
     }
 
 }
