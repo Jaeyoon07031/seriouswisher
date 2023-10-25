@@ -7,7 +7,7 @@ import org.asterisk.wishsimulator.Item;
 
 public class InventoryMenu
 {
-    public void openMenu(Player player)
+    public void inventoryMenu(Player player)
     {
         System.out.println("Your Inventory: ");
         Map itemMap = player.getInventory().getMap();

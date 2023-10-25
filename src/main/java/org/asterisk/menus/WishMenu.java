@@ -18,7 +18,12 @@ public class WishMenu
     {
         for (;;)
         {
-            System.out.println("WISH_MENU_INTRO_TEXT");
+            System.out.println("You currently have " + player.getPrimogems() + " Primogems, ");
+            System.out.println(player.getBlueFates() + " Acquaint Fates,");
+            System.out.println("and " + player.getPurpleFates() + " Intertwined Fates.");
+
+            System.out.println("Which banner do you want to wish on?");
+
             System.out.println("LIMITED - A rotating banner where you can get limited characters");
             System.out.println("WEAPON - A rotating banner where you can get limited weapons for limited characters");
             System.out.println("STANDARD - A static banner where you can always get standard characters and standard weapons");
@@ -37,6 +42,10 @@ public class WishMenu
                 ItemManifest oldInventory = player.getInventory();
                 oldInventory.addAll(result.getArray());
                 player.setInventory(oldInventory);
+
+                System.out.println(" - press enter to continue - ");
+                String useless = console.nextLine();
+
                 return;
             }
             else if (response.equalsIgnoreCase("WEAPON"))
@@ -58,6 +67,10 @@ public class WishMenu
                 ItemManifest oldInventory = player.getInventory();
                 oldInventory.addAll(result.getArray());
                 player.setInventory(oldInventory);
+
+                System.out.println(" - press enter to continue - ");
+                String useless = console.nextLine();
+
                 return;
             }
             else

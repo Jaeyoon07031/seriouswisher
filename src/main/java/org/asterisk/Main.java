@@ -15,58 +15,70 @@ public class Main
         Scanner console = new Scanner(System.in);
         Player player = new Player();
         WishSimulator simulator = new WishSimulator();
-        InventoryMenu inventoryMenu = new InventoryMenu();
+        InventoryMenu inventory = new InventoryMenu();
         PaymentProcessor payments = new PaymentProcessor();
+        ShopMenu shop = new ShopMenu();
+
+        double outstandingBalance = 0;
 
         //TODO: write an introduction and gambling hotline thing lmao
         System.out.println("INTRODUCTION_TEXT");
 
         for (;;)
         {
-            System.out.println("CHOOSE_MENU_TEXT");
+            System.out.println("Choose a menu: ");
+            System.out.println("WISH - wish for new items");
+            System.out.println("SHOP - obtain more gems");
+            System.out.println("INVENTORY - see the items you have already obtained");
+            System.out.println("CHECKOUT - pay for your gem purchases");
+            System.out.println("HELP - see a short tutorial");
+            System.out.println("EXIT - exit the program");
+
             String choice = console.nextLine();
 
             if (choice.equalsIgnoreCase("WISH"))
             {
+                // why is this the only one not instantiated???
                 WishMenu.wishMenu(console, simulator, player);
             }
             else if (choice.equalsIgnoreCase("SHOP"))
             {
-                shopMenu();
+                outstandingBalance = outstandingBalance + shop.shopMenu(player, console);
             }
             else if (choice.equalsIgnoreCase("INVENTORY"))
             {
-                inventoryMenu(inventoryMenu, player);
+                inventory.inventoryMenu(player);
             }
             else if (choice.equalsIgnoreCase("CHECKOUT"))
             {
-                checkoutMenu(payments);
+                if (outstandingBalance == 0)
+                {
+                    System.out.println("You don't have an outstanding balance!");
+                    continue;
+                }
+                payments.initializeTransaction(outstandingBalance, console);
+                outstandingBalance = 0;
             }
             else if (choice.equalsIgnoreCase("HELP"))
             {
                 helpMenu();
             }
+            else if (choice.equalsIgnoreCase("EXIT"))
+            {
+                if (outstandingBalance == 0)
+                {
+                    return;
+                }
+                else
+                {
+                    System.out.println("You still have an outsanding balance, pay that in CHECKOUT first!");
+                }
+            }
             else
             {
-                System.out.println("Invalid choice, try again.");
+                System.out.println("Not a valid option, try again");
             }
         }
-    }
-
-    private static void shopMenu()
-    {
-
-    }
-
-    private static void inventoryMenu(InventoryMenu inventoryMenu, Player player)
-    {
-        inventoryMenu.openMenu(player);
-    }
-
-    private static void checkoutMenu(PaymentProcessor payments)
-    {
-        final int TEMP_BALANCE = 100;
-        payments.initializeTransaction(TEMP_BALANCE);
     }
 
     private static void helpMenu()
