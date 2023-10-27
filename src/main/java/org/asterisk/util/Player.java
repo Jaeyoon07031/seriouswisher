@@ -8,14 +8,15 @@ public class Player
     private int primogems;
     private int blueFates;
     private int purpleFates;
-    private int outstandingBalance;
-
     private int standardFourPity;
     private int standardFivePity;
     private int limitedFourPity;
     private int limitedFivePity;
+    private int weaponFourPity;
+    private int weaponFivePity;
 
     private boolean limitedCharacterPity;
+    private boolean limitedWeaponPity;
 
     private ItemManifest inventory;
 
@@ -24,10 +25,14 @@ public class Player
         primogems = 16000;
         blueFates = 50;
         purpleFates = 0;
-        outstandingBalance = 0;
         standardFourPity = 0;
         standardFivePity = 0;
+        limitedFourPity = 0;
+        limitedFivePity = 0;
+        weaponFourPity = 0;
+        weaponFivePity = 0;
         limitedCharacterPity = false;
+        limitedWeaponPity = false;
 
         inventory = new ItemManifest(new ArrayList<Item>());
     }
@@ -60,16 +65,6 @@ public class Player
     public void setPurpleFates(int newAmount)
     {
         purpleFates = newAmount;
-    }
-
-    public int getOutstandingBalance()
-    {
-        return outstandingBalance;
-    }
-
-    public void setOutstandingBalance(int newAmount)
-    {
-        outstandingBalance = newAmount;
     }
 
     public ItemManifest getInventory()
@@ -132,4 +127,33 @@ public class Player
         limitedCharacterPity = newAmount;
     }
 
+    public int getWeaponFourPity()
+    {
+        return weaponFourPity;
+    }
+
+    public void setWeaponFourPity (int newAmount)
+    {
+        weaponFourPity = newAmount;
+    }
+
+    public int getWeaponFivePity()
+    {
+        return weaponFivePity;
+    }
+
+    public void setWeaponFivePity (int newAmount)
+    {
+        weaponFivePity = newAmount;
+    }
+
+    public boolean getLimitedWeaponPity()
+    {
+        return limitedWeaponPity;
+    }
+
+    public void setLimitedWeaponPity (boolean newAmount)
+    {
+        limitedWeaponPity = newAmount;
+    }
 }

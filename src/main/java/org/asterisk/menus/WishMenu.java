@@ -32,6 +32,13 @@ public class WishMenu
 
             if (response.equalsIgnoreCase("LIMITED"))
             {
+                if (player.getPrimogems() < 160 && player.getPurpleFates() < 0)
+                {
+                    System.out.println("You don't have enough primogems/fates to pull on this banner!");
+                    System.out.println("Go to the SHOP to get more!");
+                    return;
+                }
+
                 System.out.println("You are now pulling on the Limited Character Banner.");
                 int wishCount = askLimitedWishCount(console, player);
 
@@ -50,13 +57,38 @@ public class WishMenu
             }
             else if (response.equalsIgnoreCase("WEAPON"))
             {
-                //TODO: make weapon banner
+                if (player.getPrimogems() < 160 && player.getPurpleFates() < 0)
+                {
+                    System.out.println("You don't have enough primogems/fates to pull on this banner!");
+                    System.out.println("Go to the SHOP to get more!");
+                    return;
+                }
+
                 System.out.println("You are now pulling on the Limited Weapon Banner.");
                 int wishCount = askLimitedWishCount(console, player);
+
+                ItemManifest result = simulator.simulateWeaponWish(player, wishCount);
+                player.setPurpleFates(player.getPurpleFates() - wishCount);
+                printWishResults(result);
+
+                ItemManifest oldInventory = player.getInventory();
+                oldInventory.addAll(result.getArray());
+                player.setInventory(oldInventory);
+
+                System.out.println(" - press enter to continue - ");
+                String useless = console.nextLine();
+
                 return;
             }
             else if (response.equalsIgnoreCase("STANDARD"))
             {
+                if (player.getPrimogems() < 160 && player.getBlueFates() < 0)
+                {
+                    System.out.println("You don't have enough primogems/fates to pull on this banner!");
+                    System.out.println("Go to the SHOP to get more!");
+                    return;
+                }
+
                 System.out.println("You are now pulling on the Standard Banner.");
                 int wishCount = askStandardWishCount(console, player);
 
@@ -79,8 +111,6 @@ public class WishMenu
             }
         }
     }
-
-    //TODO: fix getting stuck in wishUI forever if you have 0 pulls
 
     private static int askLimitedWishCount(Scanner console, Player player)
     {

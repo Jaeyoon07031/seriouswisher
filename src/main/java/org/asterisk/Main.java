@@ -22,7 +22,7 @@ public class Main
         double outstandingBalance = 0;
 
         //TODO: write an introduction and gambling hotline thing lmao
-        System.out.println("INTRODUCTION_TEXT");
+        System.out.println("Welcome to \"Serious Wisher\"!");
 
         for (;;)
         {
@@ -67,6 +67,7 @@ public class Main
             {
                 if (outstandingBalance == 0)
                 {
+                    System.out.println("Thank you for playing!");
                     return;
                 }
                 else
@@ -84,6 +85,14 @@ public class Main
     private static void helpMenu()
     {
         //TODO: write useful info
-        System.out.println("USEFUL_INFO_TEXT");
+        System.out.println("\"Wish\" for characters and items!");
+        System.out.println("\"Intertwined Fate\" used for LIMITED and WEAPON wishes");
+        System.out.println("\"Acquaint Fate\" used for STANDARD wishes");
+        System.out.println("Each Fate is 160 \"Primogems\" each, and can be converted when you wish");
+        System.out.println("4-Star Item GUARANTEED every 10 pulls on any banner");
+        System.out.println("5-Star Item GUARANTEED every 90 pulls on STANDARD/LIMITED, or 80 pulls on WEAPON");
+        System.out.println("Probability of 5-STar Item increases significantly in the last 10 pulls before guaranteed");
+        System.out.println("50% Probability of a LIMITED 5-Star Character, 50% Probability of a STANDARD 5-Star Character when pulling on LIMITED");
+        System.out.println("75% Probability of a LIMITED 5-Star Weapon, 25% Probability of a STANDARD 5-Star Weapon when pulling on WEAPON");
     }
 }

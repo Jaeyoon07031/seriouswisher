@@ -28,15 +28,21 @@ public class ItemUtils
     private static final Item[] orderedItemList = {Item.ALBEDO, Item.ALHAITHAM, Item.ARATAKI_ITTO, Item.BAIZHU, Item.CYNO, Item.EULA,
             Item.GANYU, Item.HU_TAO, Item.KAEDEHARA_KAZUHA, Item.KAMISATO_AYAKA, Item.KAMISATO_AYATO, Item.KLEE, Item.LYNEY,
             Item.NAHIDA, Item.NEUVILLETTE, Item.NILOU, Item.RAIDEN_SHOGUN, Item.SANGONOMIYA_KOKOMI, Item.SHENHE, Item.TARTAGLIA,
-            Item.VENTI, Item.WANDERER, Item.WRIOTHESLEY, Item.XIAO, Item.YAE_MIKO, Item.YELAN, Item.YOIMIYA, Item.ZHONGLI, Item.JEAN, Item.QIQI,
-            Item.TIGHNARI, Item.KEQING, Item.MONA, Item.DEHYA, Item.DILUC, Item.AMOS_BOW, Item.SKYWARD_HARP, Item.LOST_PRAYER_TO_THE_SACRED_WINDS,
-            Item.SKYWARD_ATLAS, Item.SKYWARD_PRIDE, Item.WOLFS_GRAVESTONE, Item.PRIMORDIAL_JADE_WINGED_SPEAR, Item.SKYWARD_SPINE,
-            Item.AQUILA_FAVONIA, Item.SKYWARD_BLADE, Item.FARUZAN, Item.SAYU, Item.SHIKANOIN_HEIZOU, Item.SUCROSE, Item.CHONGYUN,
-            Item.DIONA, Item.KAEYA, Item.LAYLA, Item.MIKA, Item.ROSARIA, Item.COLLEI, Item.KAVEH, Item.KIRARA, Item.YAOYAO,
-            Item.BEIDOU, Item.DORI, Item.FISCHL, Item.SARA, Item.KUKI_SHINOBU, Item.LISA, Item.RAZOR, Item.GOROU, Item.NINGGUANG,
-            Item.NOELLE, Item.YUNJIN, Item.BARBARA, Item.CANDACE, Item.XINGQIU, Item.AMBER, Item.BENNETT, Item.THOMA, Item.XIANGLING,
-            Item.XINYAN, Item.YANFEI, Item.FAVONIUS_WARBOW, Item.RUST, Item.SACRIFICIAL_BOW, Item.THE_STRINGLESS, Item.EYE_OF_PERCEPTION,
-            Item.FAVONIUS_CODEX, Item.THE_WIDSITH, Item.FAVONIUS_GREATSWORD, Item.RAINSLASHER, Item.SACRIFICIAL_GREATSWORD,
+            Item.VENTI, Item.WANDERER, Item.WRIOTHESLEY, Item.XIAO, Item.YAE_MIKO, Item.YELAN, Item.YOIMIYA, Item.ZHONGLI,
+            Item.A_THOUSAND_FLOATING_DREAMS, Item.AQUA_SIMULACRA, Item.BEACON_OF_THE_REED_SEA, Item.CALAMITY_QUELLER, Item.CASHFLOW_SUPERVISION,
+            Item.ELEGY_FOR_THE_END, Item.ENGULFING_LIGHTNING, Item.EVERLASTING_MOONGLOW, Item.FREEDOM_SWORN, Item.HARAN_GEPPAKU_FUTSU,
+            Item.HUNTERS_PATH, Item.JADEFALLS_SPLENDOR, Item.KAGURAS_VERITY, Item.KEY_OF_KHAJ_NISUT, Item.LIGHT_OF_FOLIAR_INCISION,
+            Item.MEMORY_OF_DUST, Item.MISTSPLITTER_REFORGED, Item.POLAR_STAR, Item.PRIMORDIAL_JADE_CUTTER, Item.REDHORN_STONETHRESHER,
+            Item.SONG_OF_BROKEN_PINES, Item.STAFF_OF_HOMA, Item.STAFF_OF_THE_SCARLET_SANDS, Item.SUMMIT_SHAPER, Item.THE_FIRST_GREAT_MAGIC,
+            Item.THE_UNFORGED, Item.THUNDERING_PULSE, Item.TOME_OF_THE_ETERNAL_FLOW, Item.TULAYTULLAHS_REMEMBRANCE, Item.VORTEX_VANQUISHER,
+            Item.JEAN, Item.QIQI, Item.TIGHNARI, Item.KEQING, Item.MONA, Item.DEHYA, Item.DILUC, Item.AMOS_BOW, Item.SKYWARD_HARP,
+            Item.LOST_PRAYER_TO_THE_SACRED_WINDS, Item.SKYWARD_ATLAS, Item.SKYWARD_PRIDE, Item.WOLFS_GRAVESTONE, Item.PRIMORDIAL_JADE_WINGED_SPEAR,
+            Item.SKYWARD_SPINE, Item.AQUILA_FAVONIA, Item.SKYWARD_BLADE, Item.FARUZAN, Item.SAYU, Item.SHIKANOIN_HEIZOU, Item.SUCROSE,
+            Item.CHONGYUN, Item.DIONA, Item.KAEYA, Item.LAYLA, Item.MIKA, Item.ROSARIA, Item.COLLEI, Item.KAVEH, Item.KIRARA,
+            Item.YAOYAO, Item.BEIDOU, Item.DORI, Item.FISCHL, Item.SARA, Item.KUKI_SHINOBU, Item.LISA, Item.RAZOR, Item.GOROU,
+            Item.NINGGUANG, Item.NOELLE, Item.YUNJIN, Item.BARBARA, Item.CANDACE, Item.XINGQIU, Item.AMBER, Item.BENNETT, Item.THOMA,
+            Item.XIANGLING, Item.XINYAN, Item.YANFEI, Item.FAVONIUS_WARBOW, Item.RUST, Item.SACRIFICIAL_BOW, Item.THE_STRINGLESS,
+            Item.EYE_OF_PERCEPTION, Item.FAVONIUS_CODEX, Item.THE_WIDSITH, Item.FAVONIUS_GREATSWORD, Item.RAINSLASHER, Item.SACRIFICIAL_GREATSWORD,
             Item.THE_BELL, Item.DRAGONS_BANE, Item.FAVONIUS_LANCE, Item.FAVONIUS_SWORD, Item.LIONS_ROAR, Item.SACRIFICIAL_SWORD,
             Item.THE_FLUTE, Item.RAVEN_BOW, Item.SHARPSHOOTERS_OATH, Item.SLINGSHOT, Item.EMERALD_ORB, Item.MAGIC_GUIDE,
             Item.THRILLING_TALES_OF_DRAGON_SLAYERS, Item.BLOODTAINTED_GREATSWORD, Item.DEBATE_CLUB, Item.FERROUS_SHADOW,
@@ -44,6 +50,7 @@ public class ItemUtils
 
 
     private static final Item limitedFiveCharacter = Item.WRIOTHESLEY;
+    private static final Item limitedFiveWeapon = Item.CASHFLOW_SUPERVISION;
 
     public static String getItemDisplayName(Item item)
     {
@@ -157,6 +164,36 @@ public class ItemUtils
             case YELAN -> "Yelan";
             case YOIMIYA -> "Yoimiya";
             case ZHONGLI -> "Zhongli";
+            case A_THOUSAND_FLOATING_DREAMS -> "A Thousand Floating Dreams";
+            case AQUA_SIMULACRA -> "Aqua Simulacra";
+            case BEACON_OF_THE_REED_SEA -> "Beacon of the Reed Sea";
+            case CALAMITY_QUELLER -> "Calamity Queller";
+            case CASHFLOW_SUPERVISION -> "Cashflow Supervision";
+            case ELEGY_FOR_THE_END -> "Elegy for the End";
+            case ENGULFING_LIGHTNING -> "Engulfing Lightning";
+            case EVERLASTING_MOONGLOW -> "Everlasting Moonglow";
+            case FREEDOM_SWORN -> "Freedom Sworn";
+            case HARAN_GEPPAKU_FUTSU -> "Haran Geppaku Futsu";
+            case HUNTERS_PATH -> "Hunter's Path";
+            case JADEFALLS_SPLENDOR -> "Jadefall's Splendor";
+            case KAGURAS_VERITY -> "Kagura's Verity";
+            case KEY_OF_KHAJ_NISUT -> "Key of Khaj-Nisut";
+            case LIGHT_OF_FOLIAR_INCISION -> "Light of Foliar Incision";
+            case MEMORY_OF_DUST -> "Memory of Dust";
+            case MISTSPLITTER_REFORGED -> "Mistsplitter Reforged";
+            case POLAR_STAR -> "Polar Star";
+            case PRIMORDIAL_JADE_CUTTER -> "Primordial Jade Cutter";
+            case REDHORN_STONETHRESHER -> "Redhorn Stonethresher";
+            case SONG_OF_BROKEN_PINES -> "Song of Broken Pines";
+            case STAFF_OF_HOMA -> "Staff of Homa";
+            case STAFF_OF_THE_SCARLET_SANDS -> "Staff of the Scarlet Sands";
+            case SUMMIT_SHAPER -> "Summit Shaper";
+            case THE_FIRST_GREAT_MAGIC -> "The First Great Magic";
+            case THE_UNFORGED -> "The Unforged";
+            case THUNDERING_PULSE -> "Thundering Pulse";
+            case TOME_OF_THE_ETERNAL_FLOW -> "Tome of the Eternal Flow";
+            case TULAYTULLAHS_REMEMBRANCE -> "Tulaytullah's Remembrance";
+            case VORTEX_VANQUISHER -> "Vortex Vanquisher";
         };
     }
 
@@ -167,7 +204,12 @@ public class ItemUtils
                     SKYWARD_ATLAS, SKYWARD_PRIDE, WOLFS_GRAVESTONE, PRIMORDIAL_JADE_WINGED_SPEAR, SKYWARD_SPINE, AQUILA_FAVONIA,
                     SKYWARD_BLADE, ALBEDO, ALHAITHAM, ARATAKI_ITTO, BAIZHU, CYNO, EULA, GANYU, HU_TAO, KAEDEHARA_KAZUHA, KAMISATO_AYAKA,
                     KAMISATO_AYATO, KLEE, LYNEY, NAHIDA, NEUVILLETTE, NILOU, RAIDEN_SHOGUN, SANGONOMIYA_KOKOMI, SHENHE, TARTAGLIA,
-                    VENTI, WANDERER, WRIOTHESLEY, XIAO, YAE_MIKO, YELAN, YOIMIYA, ZHONGLI ->
+                    VENTI, WANDERER, WRIOTHESLEY, XIAO, YAE_MIKO, YELAN, YOIMIYA, ZHONGLI, A_THOUSAND_FLOATING_DREAMS, AQUA_SIMULACRA,
+                    BEACON_OF_THE_REED_SEA, CALAMITY_QUELLER, CASHFLOW_SUPERVISION, ELEGY_FOR_THE_END, ENGULFING_LIGHTNING,
+                    EVERLASTING_MOONGLOW, FREEDOM_SWORN, HARAN_GEPPAKU_FUTSU, HUNTERS_PATH, JADEFALLS_SPLENDOR, KAGURAS_VERITY,
+                    KEY_OF_KHAJ_NISUT, LIGHT_OF_FOLIAR_INCISION, MEMORY_OF_DUST, MISTSPLITTER_REFORGED, POLAR_STAR, PRIMORDIAL_JADE_CUTTER,
+                    REDHORN_STONETHRESHER, SONG_OF_BROKEN_PINES, STAFF_OF_HOMA, STAFF_OF_THE_SCARLET_SANDS, SUMMIT_SHAPER, THE_FIRST_GREAT_MAGIC,
+                    THE_UNFORGED, THUNDERING_PULSE, TOME_OF_THE_ETERNAL_FLOW, TULAYTULLAHS_REMEMBRANCE, VORTEX_VANQUISHER ->
                     5;
             case FARUZAN, SAYU, SHIKANOIN_HEIZOU, SUCROSE, CHONGYUN, DIONA, KAEYA, LAYLA, MIKA, ROSARIA, COLLEI, KAVEH, KIRARA,
                     YAOYAO, BEIDOU, DORI, FISCHL, SARA, KUKI_SHINOBU, LISA, RAZOR, GOROU, NINGGUANG, NOELLE, YUNJIN, BARBARA,
@@ -190,7 +232,7 @@ public class ItemUtils
     public static ArrayList<Item> getItems(String banner, String type, int rarity)
     {
         //TODO: different stuff for limited
-        if (banner.equals("STANDARD") || banner.equals("LIMITED"))
+        if (banner.equals("STANDARD") || banner.equals("LIMITED") || banner.equals("WEAPON"))
         {
             if (type.equals("CHARACTER"))
             {
@@ -254,5 +296,10 @@ public class ItemUtils
     public static Item getLimitedFiveCharacter()
     {
         return limitedFiveCharacter;
+    }
+
+    public static Item getLimitedFiveWeapon()
+    {
+        return limitedFiveWeapon;
     }
 }

@@ -12,12 +12,20 @@ public class InventoryMenu
         System.out.println("Your Inventory: ");
         Map itemMap = player.getInventory().getMap();
 
+        boolean itemPresent = false;
+
         for (Item item : ItemUtils.getOrderedItemList())
         {
             if (itemMap.containsKey(item))
             {
+                itemPresent = true;
                 System.out.println(ItemUtils.getPrintedString(item) + " - Held: " + itemMap.get(item));
             }
+        }
+
+        if (!itemPresent)
+        {
+            System.out.println("It's empty in here...");
         }
     }
 }

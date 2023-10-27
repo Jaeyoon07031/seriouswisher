@@ -21,7 +21,12 @@ public class ShopMenu
 
         for (;;)
         {
-            int option = InputUtils.inputProtectedInteger("Choose an Option Number", console, 1, 6);
+            int option = InputUtils.inputProtectedInteger("Choose an Option Number or 0 to EXIT", console, 0, 6);
+
+            if (option == 0)
+            {
+                return 0;
+            }
 
             System.out.println(crystals[option] + " primogems were added to your account!");
             System.out.println("You may pay your outstanding balance by navigating to the CHECKOUT menu from the main screen");
