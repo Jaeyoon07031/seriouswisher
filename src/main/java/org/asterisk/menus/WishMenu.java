@@ -32,7 +32,7 @@ public class WishMenu
 
             if (response.equalsIgnoreCase("LIMITED"))
             {
-                if (player.getPrimogems() < 160 && player.getPurpleFates() < 0)
+                if (player.getPrimogems() < 160 && player.getPurpleFates() == 0)
                 {
                     System.out.println("You don't have enough primogems/fates to pull on this banner!");
                     System.out.println("Go to the SHOP to get more!");
@@ -57,7 +57,7 @@ public class WishMenu
             }
             else if (response.equalsIgnoreCase("WEAPON"))
             {
-                if (player.getPrimogems() < 160 && player.getPurpleFates() < 0)
+                if (player.getPrimogems() < 160 && player.getPurpleFates() == 0)
                 {
                     System.out.println("You don't have enough primogems/fates to pull on this banner!");
                     System.out.println("Go to the SHOP to get more!");
@@ -82,7 +82,7 @@ public class WishMenu
             }
             else if (response.equalsIgnoreCase("STANDARD"))
             {
-                if (player.getPrimogems() < 160 && player.getBlueFates() < 0)
+                if (player.getPrimogems() < 160 && player.getBlueFates() == 0)
                 {
                     System.out.println("You don't have enough primogems/fates to pull on this banner!");
                     System.out.println("Go to the SHOP to get more!");

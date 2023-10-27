@@ -21,7 +21,6 @@ public class Main
 
         double outstandingBalance = 0;
 
-        //TODO: write an introduction and gambling hotline thing lmao
         System.out.println("Welcome to \"Serious Wisher\"!");
 
         for (;;)

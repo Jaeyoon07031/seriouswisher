@@ -8,7 +8,7 @@ public class PaymentProcessor
 {
     public PaymentProcessor()
     {
-
+        //??
     }
 
     public void initializeTransaction(double payment, Scanner console)
